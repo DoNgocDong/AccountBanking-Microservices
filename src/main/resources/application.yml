@@ -7,3 +7,32 @@ spring:
   application:
     name: ACCOUNT-SERVICE
 
+  # Database
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/accountService?createDatabaseIfNotExist=true&useSSL=false
+    username: ${db.username:root}
+    password: ${db.password:Admin@123}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    generate-ddl: true
+    open-in-view: false
+
+  # i18n
+  messages:
+    encoding: UTF-8
+    basename: i18n/messages
+
+  # Hashicorp/Vault
+  config:
+    import: vault://
+  cloud:
+    vault:
+      host: localhost
+      port: 8200
+      authentication: token
+      token: vault-root-token
+      kv:
+        backend: secret
+        enabled: true
