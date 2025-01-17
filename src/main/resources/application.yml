@@ -29,6 +29,7 @@ spring:
     import: vault://
   cloud:
     vault:
+      scheme: http
       host: localhost
       port: 8200
       authentication: token
