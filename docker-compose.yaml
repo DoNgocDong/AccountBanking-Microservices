@@ -1,0 +1,19 @@
+services:
+  # Vault
+  vault:
+    image: hashicorp/vault:latest
+    container_name: vault-ctn
+    command: "server -dev -dev-root-token-id=vault-root-token"
+    ports:
+      - "8200:8200"
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: "vault-root-token"
+      VAULT_ADDR: "http://127.0.0.1:8200"
+    volumes:
+      - ./vault/data:/vault/data
+      - ./vault/config:/vault/config
+    cap_add:
+      - IPC_LOCK
+    healthcheck:
+      test: [ "CMD", "vault", "status" ]
+    restart: unless-stopped

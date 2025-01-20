@@ -36,9 +36,12 @@ public class Users extends BaseEntity {
     @Column(unique = true)
     private String identityCardNumber;
 
+    @Column(nullable = false)
     private String fullName;
 
+    @Column(nullable = false)
     private String address;
 
+    @Column(nullable = false)
     private Date birthDate;
 }

@@ -11,7 +11,6 @@ import lombok.*;
 @DiscriminatorColumn(name = "account_type", discriminatorType = DiscriminatorType.STRING)
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class AccountDetails extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

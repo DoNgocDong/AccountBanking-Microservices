@@ -1,6 +1,7 @@
 package com.ngocd.microaccountservice.entities.accountDetails;
 
 import com.ngocd.microaccountservice.entities.AccountDetails;
+import com.ngocd.microaccountservice.entities.type.AccountTypes;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.*;
@@ -8,7 +9,7 @@ import lombok.*;
 import java.util.Date;
 
 @Entity
-@DiscriminatorValue("SAVING")
+@DiscriminatorValue(value = AccountTypes.Values.SAVING)
 @Data
 @EqualsAndHashCode(callSuper=false)
 @NoArgsConstructor
