@@ -47,12 +47,6 @@
         </encoder>
     </appender>
 
-    <!--    bat MDC-->
-    <!--    <turboFilter class="ch.qos.logback.classic.turbo.MDCFilter">-->
-    <!--        <MDCKey>user</MDCKey>-->
-    <!--    </turboFilter>-->
-
-    <!--    Config root logger-->
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>

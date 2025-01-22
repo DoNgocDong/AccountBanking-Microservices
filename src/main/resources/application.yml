@@ -37,3 +37,10 @@ spring:
       kv:
         backend: secret
         enabled: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    try-it-out-enabled: true
+    filter: true
+  packages-to-scan: com.ngocd.microaccountservice
