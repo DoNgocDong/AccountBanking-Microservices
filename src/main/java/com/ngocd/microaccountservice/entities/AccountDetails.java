@@ -1,5 +1,7 @@
 package com.ngocd.microaccountservice.entities;
 
+import com.ngocd.microaccountservice.entities.type.AccountTypes;
+import com.ngocd.microaccountservice.entities.type.AccountStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -7,8 +9,6 @@ import lombok.*;
 @Table(name = "account_details")
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "account_type", discriminatorType = DiscriminatorType.STRING)
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountDetails extends BaseEntity {
@@ -16,7 +16,14 @@ public class AccountDetails extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long accountDetailId;
 
-    @ManyToOne
-    @JoinColumn(name = "account_id")
-    private Accounts account;
+    @Column(nullable = false, unique = true)
+    private String accountNumber;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private AccountTypes accountType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private AccountStatus status = AccountStatus.ACTIVE;
 }
